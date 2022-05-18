@@ -26,11 +26,11 @@ router.post('/', checkAccountPayload, checkAccountNameUnique, (req, res, next) =
   // DO YOUR MAGIC
 })
 
-router.put('/:id', checkAccountId, checkAccountPayload, checkAccountNameUnique, (req, res, next) => {
-  // Accounts.updateById(req.params.id, req.body)
-  // .then(result => {
-
-  // })
+router.put('/:id', checkAccountPayload, checkAccountId, (req, res, next) => {
+  Accounts.updateById(req.params.id, req.body)
+  .then(result => {
+    res.json(result)
+  })
   // DO YOUR MAGIC
 });
 

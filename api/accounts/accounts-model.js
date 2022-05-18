@@ -28,10 +28,18 @@ const create = account => {
 }
 
 const updateById = (id, account) => {
-  db('accounts')
-  .update(account).where('id', id);
-  return getById(id)
+  return db('accounts')
+  .where('id', id).update(account)
+  .then(result => {
+    console.log(result)
+    return getById(id)
+  });
+
+  // await db('accounts')
+  // .where('id', id).update(account)
+  //   return getById(id)
   // DO YOUR MAGIC
+  
 }
 
 const deleteById = id => {
